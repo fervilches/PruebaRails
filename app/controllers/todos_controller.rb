@@ -33,10 +33,15 @@ class TodosController < ApplicationController
     redirect_to todos_path
   end
 
-  def list
-    @todos = Todo.all
-    @todos.save
-  end
+def list
+  @todos = Todo.all
+end
+
+def complete
+  @todo = Todo.find(params[:id])
+  @completado = todo.completed true
+  @nocompletado = todo.completed false
+end
 
   private
   def todo_params
